@@ -1,0 +1,6 @@
+.extern g_currentTest
+
+.set C_CPUFLAG_N, 0x80000000
+.set C_CPUFLAG_Z, 0x40000000
+.set C_CPUFLAG_C, 0x20000000
+.set C_CPUFLAG_V, 0x10000000
