@@ -4,6 +4,7 @@
 .include "tests/arm/dataproc/rsb.inc"
 .include "tests/arm/dataproc/add.inc"
 .include "tests/arm/dataproc/adc.inc"
+.include "tests/arm/dataproc/sbc.inc"
 
 .text
 .balign 4
@@ -19,5 +20,6 @@ test_arm_dataproc:
     bl test_arm_dataproc_rsb
     bl test_arm_dataproc_add
     bl test_arm_dataproc_adc
+    bl test_arm_dataproc_sbc
 
     pop {pc}
