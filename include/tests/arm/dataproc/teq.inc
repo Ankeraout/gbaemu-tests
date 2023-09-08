@@ -1,0 +1,1 @@
+.extern test_arm_dataproc_teq

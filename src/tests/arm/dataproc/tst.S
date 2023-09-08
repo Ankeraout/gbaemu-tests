@@ -12,6 +12,7 @@ test_arm_dataproc_tst:
     bl test_arm_dataproc_tst_2
     bl test_arm_dataproc_tst_3
     bl test_arm_dataproc_tst_4
+    bl test_arm_dataproc_tst_5
 
     pop {pc}
 
@@ -107,11 +108,31 @@ test_arm_dataproc_tst_4:
 
     ldr r0, =0xaaaaaaaa
     ldr r1, =0x55555555
-    .word 0xe1100001 @ TST r0, r0, r1
+    tst r0, r1 @ Rd = 0 in the instruction encoding
     mrs r2, cpsr
 
     teq r1, r0, lsr #1
     bne testFailed
+
+    and r2, #0xf0000000
+    teq r2, #(C_CPUFLAG_Z)
+    bne testFailed
+
+    bx r14
+
+@ TST 0, 1 => (flags = Z)
+test_arm_dataproc_tst_5:
+    ldr r0, =#0x00080005
+    ldr r1, =g_currentTest
+    str r0, [r1]
+
+    mrs r2, cpsr
+    bic r2, #0xf0000000
+    msr cpsr, r2
+
+    mov r0, #0
+    tst r0, #1
+    mrs r2, cpsr
 
     and r2, #0xf0000000
     teq r2, #(C_CPUFLAG_Z)
