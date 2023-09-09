@@ -14,6 +14,7 @@
 .include "tests/arm/dataproc/mov.inc"
 .include "tests/arm/dataproc/bic.inc"
 .include "tests/arm/dataproc/mvn.inc"
+.include "tests/arm/dataproc/lsl.inc"
 
 .text
 .balign 4
@@ -39,5 +40,6 @@ test_arm_dataproc:
     bl test_arm_dataproc_mov
     bl test_arm_dataproc_bic
     bl test_arm_dataproc_mvn
+    bl test_arm_dataproc_lsl
 
     pop {pc}
