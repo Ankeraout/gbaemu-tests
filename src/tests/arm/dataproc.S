@@ -11,6 +11,7 @@
 .include "tests/arm/dataproc/cmp.inc"
 .include "tests/arm/dataproc/cmn.inc"
 .include "tests/arm/dataproc/orr.inc"
+.include "tests/arm/dataproc/mov.inc"
 
 .text
 .balign 4
@@ -33,5 +34,6 @@ test_arm_dataproc:
     bl test_arm_dataproc_cmp
     bl test_arm_dataproc_cmn
     bl test_arm_dataproc_orr
+    bl test_arm_dataproc_mov
 
     pop {pc}
