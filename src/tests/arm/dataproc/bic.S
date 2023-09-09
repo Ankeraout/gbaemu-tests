@@ -12,6 +12,7 @@ test_arm_dataproc_bic:
     bl test_arm_dataproc_bic_2
     bl test_arm_dataproc_bic_3
     bl test_arm_dataproc_bic_4
+    bl test_arm_dataproc_bic_5
 
     pop {pc}
 
@@ -126,6 +127,29 @@ test_arm_dataproc_bic_4:
 
     and r2, #0xf0000000
     teq r2, #(C_CPUFLAG_N)
+    bne testFailed
+
+    bx r14
+
+@ BIC 0x80000000, 0 => 0x80000000 (flags not updated)
+test_arm_dataproc_bic_5:
+    ldr r0, =#0x000e0005
+    ldr r1, =g_currentTest
+    str r0, [r1]
+
+    mrs r2, cpsr
+    bic r2, #0xf0000000
+    msr cpsr, r2
+
+    mov r0, #0x80000000
+    bic r1, r0, #0
+    mrs r2, cpsr
+
+    teq r1, #0x80000000
+    bne testFailed
+
+    and r2, #0xf0000000
+    teq r2, #0
     bne testFailed
 
     bx r14
