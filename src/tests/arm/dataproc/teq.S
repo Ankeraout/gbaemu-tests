@@ -119,7 +119,7 @@ test_arm_dataproc_teq_4:
 
 @ TEQ 0xaaaaaaaa, 0x55555555 => (flags = N) (Rd not written)
 test_arm_dataproc_teq_5:
-    ldr r0, =#0x00090004
+    ldr r0, =#0x00090005
     ldr r1, =g_currentTest
     str r0, [r1]
 
