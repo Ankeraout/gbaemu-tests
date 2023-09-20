@@ -1,4 +1,5 @@
 .include "tests/arm/bx.inc"
+.include "tests/arm/branch.inc"
 .include "tests/arm/dataproc.inc"
 
 .text
@@ -10,6 +11,7 @@ test_arm:
     push {lr}
 
     bl test_arm_bx
+    bl test_arm_branch
     bl test_arm_dataproc
 
     pop {pc}
